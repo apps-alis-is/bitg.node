@@ -1,0 +1,10 @@
+{
+    "Description": '''
+Bitcoin Green node'''
+    Links: [
+        { 
+            website: "https://bitg.org/",
+            explorer: "https://explorer.bitg.org/"
+        }
+    ]
+}
