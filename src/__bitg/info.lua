@@ -59,7 +59,7 @@ end
 
 if _info.bitgreend == 'running' then
     local _nodeType = "node"
-    if am.app.get_configuration("NODE_PRIVKEY") or am.app.get_configuration("DAEMON_CONFIGURATION.masternode")  then
+    if am.app.get_configuration("NODE_PRIVKEY") or am.app.get_configuration({"DAEMON_CONFIGURATION", "masternode"})  then
         _nodeType = "masternode"
         local _exitcode, _stdout, _stderr = _exec_bitg_cli("-datadir=data", "masternode", "status")
         local _success, _output = _get_bitg_cli_result(_exitcode, _stdout, _stderr)
@@ -91,7 +91,7 @@ if _info.bitgreend == 'running' then
     else
         if _info.synced and _nodeType ~= "masternode" then
             _info.status = 'Synced.'
-        else
+        elseif not _info.synced then
             _info.status = 'Syncing'
             _info.level = 'warn'
         end
