@@ -65,7 +65,7 @@ if _info.bitgreend == 'running' then
         local _success, _output = _get_bitg_cli_result(_exitcode, _stdout, _stderr)
 
         _info.status = _output.message
-        if not _success or (_info.status ~= 'Masternode successfully started') then
+        if not _success or (_info.state ~= 'READY') then
             _info.level = "error"
         end
     end
