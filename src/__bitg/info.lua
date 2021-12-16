@@ -64,8 +64,8 @@ if _info.bitgreend == 'running' then
         local _exitcode, _stdout, _stderr = _exec_bitg_cli("-datadir=data", "masternode", "status")
         local _success, _output = _get_bitg_cli_result(_exitcode, _stdout, _stderr)
 
-        _info.status = _output.message
-        if not _success or (_info.state ~= 'READY') then
+        _info.status = _output.status
+        if not _success or (_info.status ~= 'Ready') then
             _info.level = "error"
         end
     end
